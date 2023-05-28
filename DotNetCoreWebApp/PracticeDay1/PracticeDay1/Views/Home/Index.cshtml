@@ -1,0 +1,17 @@
+﻿@model PracticeDay1.Models.Employee; 
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @{
+        int dh=10;
+        string str = ViewBag.Depart +" without @";
+        <p>@dh</p>
+        <p>@Model.Name</p>
+        <p>@str</p>
+     }
+     <p>@ViewBag.Depart</p>
+</div>
