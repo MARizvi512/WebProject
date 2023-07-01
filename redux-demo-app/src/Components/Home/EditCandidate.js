@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {FormFeedback, FormGroup, Input, Label} from 'reactstrap'
 import {useNavigate} from 'react-router-dom';
 
-const EditCandidate = () => {
+const EditCandidate = (props) => {
 
     const [editMode, setEditMode] = useState(false); 
     const [firstName, setFirstName] = useState('');
@@ -42,6 +42,7 @@ const EditCandidate = () => {
 
     }
     const SubmitData = () => {
+        console.log('yes i got '+ props.Passid)
         if(checkValidation())
         {
             console.log('submit data Successfully');

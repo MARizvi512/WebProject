@@ -1,1 +1,1 @@
-export const Add_Candidate_Data='Add_Candidate_Data';
+export const Candidate_Data_Type='Candidate_Data_Type';

@@ -1,8 +1,8 @@
-import {Add_Candidate_Data} from '../constants';
-const Add_Candidate_Data_Action = (data) =>{
+import {Candidate_Data_Type} from '../constants';
+const Candidate_Data_Action = (data) =>{
     return {
-        type : Add_Candidate_Data,
+        type : Candidate_Data_Type,
         data : data
     }
 }
-export default Add_Candidate_Data_Action;
+export default Candidate_Data_Action;

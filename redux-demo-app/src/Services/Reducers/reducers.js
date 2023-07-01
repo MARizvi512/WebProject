@@ -1,17 +1,16 @@
-import {Add_Candidate_Data} from '../constants';
+import {Candidate_Data_Type} from '../constants';
 
 const initialState = {
     candidateData: []
 }
 
 const CandidateState = (state=initialState, action) => {
+    
     switch(action.type)
     {
-        case Add_Candidate_Data :
-            console.log(state);
+        case Candidate_Data_Type :
             return {
-                ...state,
-                candidateData: action.data
+                candidateData:  action.data
             }
         default :
             return state;

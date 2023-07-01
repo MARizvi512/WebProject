@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Offcanvas, OffcanvasBody, OffcanvasHeader, Table } from 'reactstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PaginationComponent from '../Utility/PaginationComponent';
 import { useNavigate } from 'react-router-dom';
 
@@ -107,9 +107,17 @@ const Home = (props) => {
     const [DotPage, setDotPage] = useState(1);
     const navigate = useNavigate();
 
+    const LikeComponentDidMount = () => {
+        console.log("start");
+        console.warn(props);
+    }
+
+    useEffect(() => {
+        LikeComponentDidMount();
+    }, []);
+
     const ShowData = () => {
-        
-        
+
         return (
             Data.slice((currentPage - 1) * 5, currentPage * 5).map((record, index) => {
 
@@ -130,7 +138,7 @@ const Home = (props) => {
                         <td>
                             <ButtonGroup>
                                 <Button color='dark' onClick={(e) => { CandidatesDetail(record, Exp); toggleDetail() }}>Detail</Button>
-                                <Button color='dark' onClick={(e) => { EditPageCall({Name, Exp, Phone, University}) }}>Edit</Button>
+                                <Button color='dark' onClick={(e) => { EditPageCall({ Name, Exp, Phone, University }) }}>Edit</Button>
                                 <Button color='danger'>Delete</Button>
                             </ButtonGroup>
                         </td>
@@ -143,20 +151,24 @@ const Home = (props) => {
     }
 
     const EditPageCall = (propsPass) => {
-        
-        props.addCandidateHandler(propsPass);
+
+        props.CandidateHandler(propsPass);
         navigate('/EditCandidate');
     }
+
     const toggleDetail = () => {
         setToggleFlag(!toggleFlag);
     }
+
     const CandidatesDetail = ({ Name, FileName, University, Phone, Batch, ShortListedBy }, Experience) => {
 
         setDetail({ Name, FileName, University, Experience, Phone, Batch, ShortListedBy });
     }
+
     const PageSet = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
+
     const PageDotSet = (pageNumber) => {
         setDotPage(pageNumber);
         setCurrentPage(pageNumber);
@@ -198,7 +210,16 @@ const Home = (props) => {
                     </OffcanvasBody>
                 </Offcanvas>
             </div>
-            <PaginationComponent page={currentPage} data={Data} pageSize={5} methodPageSet={PageSet} methodPageDotSet={PageDotSet} />
+            <div className='row'>
+                <div className='col-6 m-0'>
+                    <PaginationComponent page={currentPage} data={Data} pageSize={5} methodPageSet={PageSet} methodPageDotSet={PageDotSet} />
+                </div>
+                <div className='col-6 m-0' >
+                    <button className='btn btn-primary m-2 mt-0' style={{float:"right"}} onClick={(e) => EditPageCall({currentPage})}>Add</button>
+                </div>
+                
+            </div>
+            
         </div>
     );
 
